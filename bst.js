@@ -46,6 +46,20 @@ class BST {
         }
     }
 
+    contains(value) {
+        if(this.root === null) return false
+        if(this.root.value ===value) return true
+        let temp = this.root
+        while(temp) {
+            if(value < temp.value) {
+                temp = temp.left
+            }else if (value > temp.value) {
+                temp = temp.right
+            }else return true
+        }
+        return false
+    }
+
     insert2(value) {
         //create new node
         const newNode = new Node(value)
@@ -81,4 +95,4 @@ tree.insert(18)
 tree.insert(52)
 tree.insert(82)
 tree.insert(27)
-console.log(tree)
+console.log(tree.contains(53))
