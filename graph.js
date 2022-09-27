@@ -36,6 +36,14 @@ class Graph {
     removeVertex(vertex) {
         //before you can remove vertex
         //you must first remove the connection/edges
+        if(!this.adjacentList[vertex]) return undefined
+        while(this.adjacentList[vertex].length) {
+            let temp = this.adjacentList[vertex].pop()
+            this.removeEdge(vertex, temp)
+        }
+        delete this.adjacentList[vertex]
+        //return the graph
+        return this
     }
 }
 
@@ -48,7 +56,7 @@ graph.addEdges("A", "B")
 graph.addEdges("B","C")
 graph.addEdges("C","A")
 
-graph.removeEdge("A","B")
+graph.removeVertex("A")
 
 
 console.log(graph)
