@@ -35,7 +35,7 @@ class BinarySearchTree {
         }
     }
 
-    bst() {
+    bfs() {
         let queue = []
         let result = []
         let current = this.root
@@ -46,6 +46,40 @@ class BinarySearchTree {
             if(node.left) queue.push(node.left)
             if(node.right) queue.push(node.right)
         }
+        return result
+    }
+
+    dfs_preorder() {
+        let result = []
+        function traverse(current_node) {
+            result.push(current_node.value)
+            if(current_node.left) traverse(current_node.left)
+            if(current_node.right) traverse(current_node.right)
+        }
+        traverse(this.root)
+        return result
+    }
+
+    dfs_postorder() {
+        let result = []
+        function traverse(current_node) {
+            if(current_node.left) traverse(current_node.left)
+            if(current_node.right) traverse(current_node.right)
+            result.push(current_node.value)
+        }
+        traverse(this.root)
+        return result
+    }
+
+    dfs_inorder() {
+        let result = []
+        function traverse(current_node) {
+            if(current_node.left) traverse(current_node.left)
+            result.push(current_node.value)
+            if(current_node.right) traverse(current_node.right)
+            
+        }
+        traverse(this.root)
         return result
     }
 }
@@ -61,4 +95,6 @@ bst.insert(27)
 bst.insert(52)
 bst.insert(82)
 
-console.log(bst.bst())
+
+
+console.log(bst.dfs_inorder())
