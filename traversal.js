@@ -96,5 +96,5 @@ bst.insert(52)
 bst.insert(82)
 
 
-
-console.log(bst.dfs_inorder())
+let james = "james"
+console.log(james[0])
